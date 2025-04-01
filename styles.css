@@ -34,6 +34,9 @@ html {
   display: flex;
 
 }
+.nav-icons{
+  cursor: pointer;
+}
 li {
   list-style: none;
   margin: 1rem;
@@ -69,3 +72,31 @@ a:hover::after{
 i {
   margin: 1rem;
 }
+
+/* Home styling */
+.Home {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.left-art{
+  margin-left: 30px;
+}
+h1 {
+  color: #28809A;
+  
+}
+#order{
+  padding: 7px;
+  margin-top: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  
+}
+#order:hover{
+  background-color: #28809A;
+}
+
