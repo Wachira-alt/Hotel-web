@@ -71,6 +71,24 @@ html {
   border: none;
   
 }
+.suggestions {
+  position: absolute;
+  background: white;
+  border: 1px solid #ddd;
+  width: 200px;
+  max-height: 150px;
+  overflow-y: auto;
+  display: block;
+}
+
+.suggestion-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: #f0f0f0;
+}
 
 li {
   list-style: none;
