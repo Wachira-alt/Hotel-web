@@ -44,6 +44,9 @@ html {
   display: flex;
   align-items: center;
   border-radius: 30px;
+  padding: 5px;
+  transition: width 0.4s ease-in-out;
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */
   
 
 }
@@ -57,7 +60,7 @@ html {
   font-size: 16px;
   border-radius: 20px;
 }
-.search-container.active.search-input{
+.search-container.active .search-input{
   width: 200px;
   opacity: 1;
   margin-left: 5px;
