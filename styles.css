@@ -166,6 +166,12 @@ h1 {
   color: #28809A;
   font-family: roboto;
  }
+ #price-special {
+  font-family: inter;
+  margin-top: 5px;
+  font-weight: bold;
+
+ }
 
 #Dishes {
   display: grid;
