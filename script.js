@@ -68,4 +68,34 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// order-now button functionality
+
+document.getElementById("order").addEventListener("click", function(){
+  placeOrder("Fried Chicken", 4025, 1 );
+
+});
+
+//add to cart(for all dishes) functionality
+document.querySelectorAll(".add-to-cart").forEach(button => {
+  button.addEventListener("click", function () {
+    const dishElement = this.closest(".indi-dish");
+    const name = dishElement.getAttribute("data-name");
+    const price = parseFloat(dishElement.getAttribute("data-price"));
+    placeOrder(name, price, 1);
+  });
+});
+
+//placeOrder function to send order to json server
+
+function placeOrder(dishName, price, quantity){
+  fetch("http://localhost:3000/orders", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({name: dishName, price: price, quantity: quantity})
+  })
+  .then(response => response.json())
+  .then(data => console.log("Order added:", data))
+  .catch(error => console.log("Error:", error));
+}
+
 
