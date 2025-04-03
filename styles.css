@@ -222,28 +222,43 @@ object-fit: contain;
   font-size: 20px;
 }
 .add-food {
-  width: 250px;
-  height: 100px;
+  width: 400px;
+  height: 250px;
   border: 1px solid #000;
   border-radius: 45px;
   position: relative;
   
 }
-.add-food p{
+#total-price{
   position: absolute;
-  top: 60%;
-  left:45%;
+  top: 70%;
+  left:5%;
 }
 .add-food h2{
+  font-family: roboto;
+  font-size: 100px;
   position: absolute;
-  top: 15%;
-  left:5%;
+  top: 0%;
+  left:0%;
   
   font-size: 15px;
 }
-/* .add-food i{
+.add-new{
+  border: none;
+  background-color: #f0f0f0;
   position: absolute;
   top: 24px;
+  left:75%;
+}
+.new-dish{
+  border-radius: 9px;
+  padding: 5px;
+  position: absolute;
+  top: 79%;
   left:5%;
-} */
+  border: none;
+}
+.new-dish:hover{
+  background-color: #28809A;
+}
 
