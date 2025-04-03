@@ -74,6 +74,7 @@ html {
 }
 .suggestions {
   position: absolute;
+  Top: 100%;
   border: 1px solid #ddd;
   width: 150px;
   max-height: 150px;
