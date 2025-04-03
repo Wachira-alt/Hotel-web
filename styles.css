@@ -46,6 +46,7 @@ html {
   border-radius: 30px;
   padding: 5px;
   transition: width 0.4s ease-in-out;
+  position: relative;
   /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */
   
 
@@ -73,14 +74,14 @@ html {
 }
 .suggestions {
   position: absolute;
-  background: white;
   border: 1px solid #ddd;
-  width: 200px;
+  width: 150px;
   max-height: 150px;
   overflow-y: auto;
   display: block;
-}
 
+
+}
 .suggestion-item {
   padding: 8px;
   cursor: pointer;
