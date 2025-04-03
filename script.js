@@ -34,5 +34,38 @@ searchInput.addEventListener('keydown', (event) => {
   
 });
 
+// Searching Functionality
+document.addEventListener("DOMContentLoaded", function () {
+  const searchInput = document.querySelector(".search-input");
+  const searchResults = document.getElementById("search-results");
+  const dishes = document.querySelectorAll(".indi-dish");
+
+  //function to filter dishes
+  searchInput.addEventListener("input", function () {
+    let query =searchInput.value.toLowerCase();
+    searchResults.innerHTML = ""; // clear previous suggestions
+
+    if (query.trim() === "") return; //Exit if empty
+
+    dishes.forEach(dish => {
+      let dishName = dish.dataset.name.toLowerCase();
+      if (dishName.includes(query)){
+        let suggestion = document.createElement("div");
+        suggestion.classList.add("suggestion-item");
+        suggestion.textContent = dish.dataset.name;
+
+        //click event to jump to dish
+        suggestion.addEventListener("click", function (){
+          dish.scrollIntoView({behavior: "smooth", block: "start"});
+          searchInput.value = ""; //clear input after selection
+          searchResults.innerHTML = ""; //clear suugestion
+        });
+
+        searchResults.appendChild(suggestion);
+      }
+    });
+
+  });
+});
 
 
