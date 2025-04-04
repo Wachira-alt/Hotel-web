@@ -98,4 +98,65 @@ function placeOrder(dishName, price, quantity){
   .catch(error => console.log("Error:", error));
 }
 
+//function to fetch orders from json
+
+function fetchOrders(){
+  fetch("http://localhost:3000/orders", {
+    method: "Get",
+  })
+.then(response => response.json())
+.then(data => console.log("Orders fetched:", data))
+.catch(error => console.log("Error:", error))
+  
+}
+
+//function to receive the array of orders
+
+function rendOrders(data){
+  const cartContainer = document.querySelector(".cart-item");
+  cartContainer.innerHTML = "";
+
+  data.forEach(order => {
+    //create a container for each ordered dish
+    const itemDiv = document.createElement("div");
+    itemDiv.classList.add("order-entry");
+
+    //Dish Name
+    const name = document.createElement("p");
+    name.textContent = order.name;
+
+    //Quantity
+    const quantity = document.createElement("p");
+    quantity.textContent = `Quantity: ${order.quantity}`
+
+    //price
+    const price =document.createElement("p");
+    price.textContent = `ksh${order.price}`;
+
+    //Buttons
+    const increaseBtn = document.createElement("button");
+    increaseBtn.textContent = "+";
+    increaseBtn.classList.add("increase");
+
+    const decreaseBtn = document.createElement("button");
+    decreaseBtn.textContent = "-";
+    decreaseBtn.classList.add("decrease");
+
+    const deleteBtn = document.createElement("buttton");
+    deleteBtn.textContent = "remove";
+    deleteBtn.classList.add("delete");
+
+    //appending them all to itemDiv
+    itemDiv.appendChild(name);
+    itemDiv.appendChild(quantity);
+    itemDiv.appendChild(price);
+    itemDiv.appendChild(increaseBtn);
+    itemDiv.appendChild(decreaseBtn);
+    itemDiv.appendChild(deleteBtn);
+
+    // Append itemDiv to the cart container
+    cartContainer.appendChild(itemDiv);
+    
+  });
+}
 
