@@ -181,6 +181,8 @@ h1 {
   width: 98%;
   margin: 0 auto;
   text-align: center;
+  position: relative;
+  min-height: 200px;
   
 }
 
@@ -276,12 +278,41 @@ object-fit: contain;
 .new-dish:hover{
   background-color: #28809A;
 }
-.cart-item {
+#cart {
+  width: fit-content;
+  height:fit-content;
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  position: relative; 
+
+  margin: 8px;
+  
+}
+
+
+.order-entry {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #ccc;
   padding: 10px 0;
-  border-bottom: 1px solid #ddd;
-  max-width: 250px;
-  
+  flex-wrap: wrap;
+}
+
+/* Buttons styling */
+.order-entry button {
+  padding: 4px 8px;
+  border: none;
+  background: #eee;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.order-entry button:hover {
+  background: #ddd;
 }
 
