@@ -185,5 +185,96 @@ document.addEventListener("DOMContentLoaded", fetchOrders);
 
 
 
+//Adding event listeners to the cart container
+
+const cartContainer = document.querySelector('.cart-item');
+cartContainer.addEventListener('click', function(event){
+  //Determine which button was clicked and call the appropriate function
+})
+
+// use event.target to identify the clicked element
+// Handle button clicks- check the class of the clicked elememt and call the corresponding function
+
+cartContainer.addEventListener('click', function(event){
+  const target = event.target;
+  const itemDiv = target.closest('.order-entry');
+  const dishName = itemDiv.querySelector('.dish-name').textContent;
+
+  if(target.classList.contains('increase')) {
+    increaseQuantity(dishName);
+  }else if (target.classList.contains('decrease')){
+    decreaseQuantity(dishName);
+  }else if (target.classList.contains('delete')){
+    removeDish(dishName)
+  }
+
+})
 
 
+// Define increasing dish, Decreasing dish and remove dish functions
+
+function increaseQuantity(dishName) {
+  // Fetch current orders
+  fetch("http://localhost:3000/orders")
+    .then(response => response.json())
+    .then(orders => {
+      const order = orders.find(order => order.name === dishName);
+      if (order) {
+        // Update the quantity
+        order.quantity++;
+        // Send the updated order to the server
+        updateOrder(order);
+      }
+    })
+    .catch(error => console.error("Error:", error));
+}
+
+function decreaseQuantity(dishName){
+  fetch("http://localhost:3000/orders")
+  .then(orders => {
+    const order = orders.find(order => order.name ===dishName);
+    if (order && order.quantity > 1) {
+      order.quantity --;
+      updateOrder(order);
+    }
+
+  })
+  .catch(error => console.log("error:", error));
+}
+
+function removeDish(dishName) {
+  fetch("http://localhost:3000/orders")
+    .then(response => response.json())
+    .then(orders => {
+      const order = orders.find(order => order.name === dishName);
+      if (order) {
+        // Send a DELETE request to remove the order
+        fetch(`http://localhost:3000/orders/${order.id}`, {
+          method: 'DELETE',
+        })
+        .then(() => {
+          // Re-render the cart
+          fetchOrders();
+        })
+        .catch(error => console.error("Error:", error));
+      }
+    })
+    .catch(error => console.error("Error:", error));
+}
+
+function updateOrder(dishName){
+  fetch("http://localhost:3000/orders", {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body:JSON.stringify(order),
+  })
+  .then(() => {
+    //Re-render the cart
+    fetchOrders();
+  })
+  .catch(error => console.log("Error:", error));
+  
+
+}
