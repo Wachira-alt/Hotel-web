@@ -98,21 +98,34 @@ function placeOrder(dishName, price, quantity){
   .catch(error => console.log("Error:", error));
 }
 
-//function to fetch orders from json
+// //function to fetch orders from json
 
+// function fetchOrders(){
+//   fetch("http://localhost:3000/orders", {
+//     method: "Get",
+//   })
+// .then(response => response.json())
+// .then(data => console.log("Orders fetched:", data))
+// .catch(error => console.log("Error:", error))
+  
+// }
+
+//function that fetches orders using method when page loads and passes render Orders function to show them on the cart container
 function fetchOrders(){
   fetch("http://localhost:3000/orders", {
     method: "Get",
   })
-.then(response => response.json())
-.then(data => console.log("Orders fetched:", data))
-.catch(error => console.log("Error:", error))
-  
+  .then(response => response.json())
+  .then(data => {
+    console.log("Orders fetched:", data);
+    renderOrders(data); // This shows the orders on the page
+  })
+  .catch(error => console.error ("Error fetching orders:", error));
 }
 
 //function to receive the array of orders
 
-function rendOrders(data){
+function renderOrders(data){
   const cartContainer = document.querySelector(".cart-item");
   cartContainer.innerHTML = "";
 
@@ -159,4 +172,18 @@ function rendOrders(data){
     
   });
 }
+
+
+
+//make it auto-run when the page loads
+document.addEventListener("DOMContentLoaded", fetchOrders);
+
+
+
+
+
+
+
+
+
 
